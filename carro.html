@@ -56,7 +56,7 @@
     }
 
     .reservation-form {
-      display: flex;
+      display: none; /* Inicialmente oculta */
       flex-direction: column;
       padding: 20px;
       background-color: #fff;
@@ -90,15 +90,13 @@
     button:hover {
       background-color: #45a049;
     }
-
   </style>
 </head>
 <body>
-<header>
-    <button class="btn"><a href="index.html">Inicio</a></button>
 
-</header>
-
+  <header>
+    <button class="btn">Inicio</button>
+  </header>
 
   <div class="container">
     <div class="car-container" id="carContainer">
@@ -110,17 +108,14 @@
       <form onsubmit="return realizarReservacion()">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" required>
-       
+        <br>
         <label for="email">Email:</label>
         <input type="email" id="email" required>
-<br>
-<br>
+        <br>
+        <br>
         <label for="dias">Días rentados:</label>
         <input type="number" id="dias" min="1" value="1" required oninput="actualizarTotal()">
-
         <p>Total: $<span id="total">0</span></p>
-
-       
         <button type="submit">Reservar</button>
         <button type="button" onclick="cerrarReservacion()">Cerrar</button>
       </form>
@@ -129,7 +124,7 @@
 
   <script>
     const cars = [
-      { id: 1, marca: 'Toyota', modelo: 'RAV4', precio: 350, descripcion: 'El Toyota RAV4 es un SUV compacto conocido por su versatilidad y eficiencia. Con un diseño moderno y aerodinámico, ofrece un interior espacioso y cómodo. Equipado con tecnología avanzada y características de seguridad, el RAV4 proporciona un rendimiento sólido tanto en carreteras urbanas como en terrenos todoterreno. Su eficiencia de combustible y opciones híbridas lo convierten en una opción popular para aquellos que buscan un vehículo práctico y respetuoso con el medio ambiente.', imagen: 'toy.jpg' },
+      { id: 1, marca: 'BMW 3 Series', modelo: '', precio: 350, descripcion: 'es un sedán deportivo de lujo que destaca por su elegante diseño, un rendimiento dinámico y avanzadas características tecnológicas. Conocido por su agilidad en la conducción y su interior sofisticado, el BMW 3 Series ofrece una experiencia de manejo placentera y confortable. Su combinación de estilo, potencia y comodidad lo posiciona como un referente en la categoría de automóviles de gama alta.', imagen: 'BMW.jpg' },
       // Agrega más carros según sea necesario
     ];
 
@@ -138,7 +133,7 @@
     let precioActual = 0;
 
     function mostrarFormulario(id) {
-      reservationForm.style.display = 'block';
+      reservationForm.style.display = 'flex'; // Cambiado a 'flex'
       // Puedes agregar lógica adicional para prellenar el formulario con detalles del carro
       precioActual = cars.find(car => car.id === id).precio;
       document.getElementById('dias').value = 1;
@@ -171,7 +166,7 @@
           <h3><center>${car.marca} ${car.modelo}</center></h3>
           <center><img src="${car.imagen}" alt="${car.marca} ${car.modelo}" style="center,width:360px;height:auto;"></center>
           <p>Precio: $${car.precio} al día</p>
-          <p><center>Descripción: ${car.descripcion}</center></p>
+          <p><center> ${car.descripcion}</center></p>
           <button onclick="mostrarFormulario(${car.id})">Reservar</button>
         `;
         carContainer.appendChild(carElement);
