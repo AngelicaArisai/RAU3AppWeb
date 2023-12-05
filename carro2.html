@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renta de Autos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 20px 60px 10px; /* Modificado para quitar el espacio abajo y dejar espacio arriba */
+      background-color:  #f4f4f4;
+    }
+
+    header button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 80px;
+      cursor: pointer;
+      align-items: center;
+    }
+
+    header button:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start; /* Alinear arriba */
+      width: 80%;
+      padding: 20px;
+    }
+
+    .car-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      width: 70%; /* Reducir el ancho para dejar espacio para la ventana de reservación */
+    }
+
+    .reservation-form {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background-color: #fff;
+      margin: 20px;
+      border-radius: 5px;
+      width: 30%; /* Ancho de la ventana de reservación */
+      box-sizing: border-box; /* Evitar que el padding afecte el ancho total */
+    }
+
+    .car {
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 10px;
+      margin: 10px;
+      width: 100%; /* Ancho completo en dispositivos pequeños */
+      background-color: #8a3535;
+      text-align: justify;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="btn">Inicio</button>
+</header>
+
+
+  <div class="container">
+    <div class="car-container" id="carContainer">
+      <!-- Aquí se agregarán los carros dinámicamente con JavaScript -->
+    </div>
+
+    <div class="reservation-form" id="reservationForm">
+      <h2 style="text-align: center; font-weight: bold;">Reservación</h2>
+      <form onsubmit="return realizarReservacion()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+       <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+<br>
+<br>
+        <label for="dias">Días rentados:</label>
+        <input type="number" id="dias" min="1" value="1" required oninput="actualizarTotal()">
+
+        <p>Total: $<span id="total">0</span></p>
+
+       
+        <button type="submit">Reservar</button>
+        <button type="button" onclick="cerrarReservacion()">Cerrar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const cars = [
+      { id: 1, marca: 'BMW 3 Series', modelo: '', precio: 350, descripcion: 'es un sedán deportivo de lujo que destaca por su elegante diseño, un rendimiento dinámico y avanzadas características tecnológicas. Conocido por su agilidad en la conducción y su interior sofisticado, el BMW 3 Series ofrece una experiencia de manejo placentera y confortable. Su combinación de estilo, potencia y comodidad lo posiciona como un referente en la categoría de automóviles de gama alta.', imagen: 'BMW.jpg' },
+      // Agrega más carros según sea necesario
+    ];
+
+    const carContainer = document.getElementById('carContainer');
+    const reservationForm = document.getElementById('reservationForm');
+    let precioActual = 0;
+
+    function mostrarFormulario(id) {
+      reservationForm.style.display = 'block';
+      // Puedes agregar lógica adicional para prellenar el formulario con detalles del carro
+      precioActual = cars.find(car => car.id === id).precio;
+      document.getElementById('dias').value = 1;
+      actualizarTotal();
+    }
+
+    function cerrarReservacion() {
+      reservationForm.style.display = 'none';
+    }
+
+    function realizarReservacion() {
+      // Agrega lógica de reservación aquí
+      alert('Reserva realizada con éxito');
+      cerrarReservacion();
+      window.location.href = 'index.html'; // Redirige a la página de inicio
+      return false; // Evita que el formulario se envíe y recargue la página
+    }
+
+    function actualizarTotal() {
+      const dias = parseInt(document.getElementById('dias').value);
+      const total = precioActual * dias;
+      document.getElementById('total').textContent = total;
+    }
+
+    function cargarCarros() {
+      cars.forEach(car => {
+        const carElement = document.createElement('div');
+        carElement.classList.add('car');
+        carElement.innerHTML = `
+          <h3><center>${car.marca} ${car.modelo}</center></h3>
+          <center><img src="${car.imagen}" alt="${car.marca} ${car.modelo}" style="center,width:360px;height:auto;"></center>
+          <p>Precio: $${car.precio} al día</p>
+          <p><center> ${car.descripcion}</center></p>
+          <button onclick="mostrarFormulario(${car.id})">Reservar</button>
+        `;
+        carContainer.appendChild(carElement);
+      });
+    }
+
+    cargarCarros();
+  </script>
+
+</body>
+</html>
