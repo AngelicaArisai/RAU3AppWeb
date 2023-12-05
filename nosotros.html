@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #f4f4f4;
+      color: white;
+      padding: 1em;
+      text-align: center;
+      color: black;
+
+    }
+
+    .container {
+      max-width: 1000px;
+      display: flex; /* Utilizamos flexbox para alinear los elementos */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-container {
+      flex: 1; /* El texto ocupará todo el espacio disponible */
+      padding-right: 20px; /* Añadimos espacio entre el texto y el mapa */
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .map-container {
+      flex: 1; /* El mapa ocupará todo el espacio disponible */
+    }
+
+    iframe {
+      width: 100%; /* Aseguramos que el mapa ocupe todo el contenedor */
+      height: 450px; /* Ajusta la altura según tus necesidades */
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sobre Nosotros</h1>
+  </header>
+
+  <div class="container">
+    <div class="text-container">
+      <p>
+        Bienvenido a DriveX, tu socio confiable en el mundo de la renta de autos. En Drivex, entendemos que la movilidad es esencial, 
+        y nos enorgullece ofrecerte una experiencia de renta de autos sin complicaciones y adaptada a tus necesidades. Nuestra misión es proporcionar a nuestros clientes la libertad de explorar, 
+        viajar y vivir sin limitaciones, brindándoles acceso fácil y rápido a una amplia flota de vehículos de calidad.
+      </p>
+
+      <p>Nuestra plataforma intuitiva y fácil de usar te permite reservar el auto perfecto para cada ocasión con solo unos clics. 
+        Ya sea que necesites un automóvil compacto para desplazarte por la ciudad, una SUV espaciosa para un viaje en familia o 
+        un elegante sedán para una ocasión especial, tenemos la opción ideal para ti.
+        Conoce mas de nosotros en nuestra plataforma de youtube
+
+        
+      </p>
+    </div>
+
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217327.01514873735!2d-106.68624671328125!3d31.66847969999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75c50f30829eb%3A0x1680a02c37cb328b!2sGreen%20Motion%20Car%20Rental%20-%20Cd.%20Juarez!5e0!3m2!1ses-419!2smx!4v1701762750243!5m2!1ses-419!2smx" 
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+</body>
+</html>
