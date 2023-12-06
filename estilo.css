@@ -9,15 +9,14 @@ h1{
     padding: 20px;
 }
 nav ul{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     list-style-type: none;
     text-align: center;
 }
-.contenido{
-    display: flex;
-    margin: 60px;
-    align-items: center;
-    padding: 15px;
-    max-width: 1000px;
+.Contenido {
+    max-width: 800px; /* Ajusta el ancho máximo del contenedor según tus preferencias */
+    margin: 20px; /* Añade un margen alrededor del contenedor */
+    text-align: justify; /* Justifica el texto dentro del contenedor */
+    margin: auto; /* Centra el contenedor horizontalmente */
 }
