@@ -150,14 +150,12 @@
       reservationForm.style.display = 'none';
     }
 
-    function realizarReservacion() {
+   function realizarReservacion() {
       // Agrega lógica de reservación aquí
-      alert('Reserva realizada con éxito');
       cerrarReservacion();
       window.location.href ='index.html'; // Redirige a la página de inicio
       return false; // Evita que el formulario se envíe y recargue la página
     }
-
     function actualizarTotal() {
       const dias = parseInt(document.getElementById('dias').value);
       const total = precioActual * dias;
